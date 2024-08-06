@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>滚动锚定</title>
+		<style>
+		*{margin: 0;padding: 0;}
+		.el-card{width: 600px;overflow: hidden;border-radius: 10px;margin: 60px;}
+		.fixHead{overflow: hidden; background: #ccc; height: 60px; position: fixed; top: 0; width: 100%;}
+		.actA{margin: 0 30px; line-height: 60px;color: #000; font-weight: bold;text-decoration: none;}
+		.actAnow{color: #fff;background: #09c;}
+		</style>
+	</head>
+	<body>
+
+		<div class="fixHead">
+			<a href="javascript:;" class="actA actAnow">text1</a>
+			<a href="javascript:;" class="actA">text2</a>
+			<a href="javascript:;" class="actA">text3</a>
+			<a href="javascript:;" class="actA">text4</a>
+			<a href="javascript:;" class="actA">text5</a>
+		</div>
+
+<div class="el-card" style="height: 600px;background: #09c;"></div>
+<div class="el-card" style="height: 1200px;background: #9fc;"></div>
+<div class="el-card" style="height: 800px;background: #f7c;"></div>
+<div class="el-card" style="height: 1000px;background: #ccc;"></div>
+<div class="el-card" style="height: 700px;background: #3dc;"></div>
+<div class="el-card" style="height: 700px;background: #fff;"></div>
+
+
+
+		<script>
+			const actBtn = document.querySelectorAll(".actA");
+
+			function removeA() {
+				actBtn.forEach(function(i) {
+					i.classList.remove("actAnow");
+				});
+			}//移除样式函数
+			
+			actBtn.forEach(function(i) {
+				i.onclick = () => {
+					removeA();
+					i.classList.add("actAnow");
+				};
+			});
+			//点击变色
+
+			window.addEventListener('scroll', function() {
+			
+				const elements = document.querySelectorAll('.el-card');
+				const actBtn = document.querySelectorAll(".actA");
+				
+				elements.forEach(function(element, index) {
+					const rect = element.getBoundingClientRect();
+					if (rect.top <= 100) {
+						removeA();
+						actBtn[index].classList.add("actAnow");
+					}
+				});
+			});
+			//滚动自己变色
+			
+		</script>
+
+	</body>
+</html>

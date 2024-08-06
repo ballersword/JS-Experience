@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<style>
+			.fadeinZone{display:block;animation:fadein 0.5s; animation-fill-mode:forwards;}
+			.fadeoutZone{animation:fadeout 0.5s;animation-fill-mode:forwards;}
+			@keyframes fadein
+			{
+			from {opacity:0;}
+			to {opacity:1;}
+			}
+			@keyframes fadeout
+			{
+			from {opacity:1;}
+			to {opacity:0;}
+			}
+			
+			
+		</style>
+		
+		
+		
+		<script>
+				
+		 const subBtn = document.querySelectorAll(".subbtn");
+		 const closeBtn = document.querySelectorAll(".closebtn")[0];
+		 const layerEle = document.querySelectorAll(".layerEle")[0];
+		
+		subBtn.forEach(function(i) {
+			i.onclick = function() {
+				layerEle.classList.remove("fadeoutZone");
+				layerEle.classList.add("fadeinZone");
+		 };
+		});
+		//forEach函数批量给多个同class按钮绑定点击事件
+		
+		closeBtn.onclick = function() {
+		 	layerEle.classList.add("fadeoutZone");
+			setTimeout(function() { 
+				layerEle.classList.remove("fadeinZone"); 
+			}, 500); 
+		};
+		//小技巧 setTimeout函数用于延时触发，动画运行500毫秒，在fadeout执行完毕后，触发移除class，可用于反复点击。
+		 
+		 
+				</script>
+		
+		
+		
+		
+	</body>
+</html>

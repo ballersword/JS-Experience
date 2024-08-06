@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选择器</title>
+		<style>
+			* {margin: 0;padding: 0;}
+			.container {padding: 20px;}
+			h1 {line-height: 60px;}
+			.exp {width: 1000px;height: auto;overflow: hidden;margin: 10px 0;}
+			.exp table {border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;width: 100%;}
+			.exp table tr td {border-left: 1px solid #ccc;border-top: 1px solid #ccc;padding: 5px;}
+			.exp table tr td:nth-child(even) {background: #ddd;}
+			.exp table tr td:nth-child(odd) {background: #f5f5f5;}
+		</style>
+	 
+	</head>
+	<body>
+		<div class="container">
+			<h1>示例页面</h1>
+			<div class="exp">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>理事单位</td>
+							<td>理事单位代表</td>
+							<td class="ceshiclass">理事单位</td>
+							<td>理事单位代表</td>
+						</tr>
+						<tr>
+							<td>安徽恋爱婚姻家庭传媒有限公司</td>
+							<td id="ceshiid">曹雷</td>
+							<td>安徽恋爱婚姻家庭传媒有限公司</td>
+							<td>曹雷</td>
+						</tr>
+						<tr>
+							<td>安徽少年博览杂志社</td>
+							<td class="ceshiclass">郭丽芬</td>
+							<td>安徽少年博览杂志社</td>
+							<td>郭丽芬</td>
+						</tr>
+						<tr>
+							<td>安徽省期刊协会</td>
+							<td class="removeclass">孟黎东</td>
+							<td>安徽省期刊协会</td>
+							<td>孟黎东</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script>
+window.onload=function(){
+	 
+	
+	
+	//替换jq #id
+	document.getElementById("ceshiid").setAttribute("style","color:#09c");//返回htmldom对象
+	//document.querySelector("#ceshiid").setAttribute("style","color:#09c");
+	
+	
+	//替换jq .class
+	document.getElementsByClassName("ceshiclass");//返回数组
+	//document.querySelectorAll('.ceshiclass').setAttribute("style","color:#09c");
+	
+	//调用
+	let x = document.getElementsByClassName("ceshiclass");
+	for (let i = 0; i < x.length; i++) {
+	    x[i].setAttribute("style","color:#09c");
+	}
+	 
+    //替换jq dom操作 append
+	document.body.innerHTML += "<div id='myDiv'><img src='im.gif'/></div>";
+	
+	//替换jq css操作 添加、删除classname
+	
+	let el1 = document.querySelector("h1");
+	el1.classList.add("someClass");
+	
+	let el2 = document.querySelector(".removeclass");
+	el2.classList.remove("removeclass");
+	
+	
+	
+	
+}
+
+		</script>
+
+
+
+
+	</body>
+</html>
